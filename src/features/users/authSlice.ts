@@ -1,19 +1,13 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 import blogServices from '../../services/blogs'
 import loginService from '../../services/login'
 
 type TInitialState = {
-  user: {
-    token: string | null
-    username: string | null
-  }
+  user: null
 }
 const initialState: TInitialState = {
-  user: {
-    token: null,
-    username: null
-  }
+  user: null
 }
 export const authSlice = createSlice({
   name: 'auth',
@@ -23,7 +17,7 @@ export const authSlice = createSlice({
       state.user = action.payload
     },
     logout: state => {
-      state.user.token = null
+      state.user = null
     }
   }
 })
@@ -49,7 +43,7 @@ export const loginUser =
       blogServices.setToken(user.token)
       dispatch(login(user))
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 export const logoutUser = () => {
