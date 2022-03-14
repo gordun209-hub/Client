@@ -51,9 +51,11 @@ const EnterPage = () => {
         </form>
       ) : (
         <div>
-          <button onClick={() => dispatch(logout())}>Log out</button>{' '}
+          <button type='button' onClick={() => dispatch(logout())}>
+            Log out
+          </button>
         </div>
-      )}{' '}
+      )}
     </div>
   )
 }
